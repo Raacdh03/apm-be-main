@@ -1,10 +1,11 @@
-from rest_framework import generics, filters
+from flask import Response
+from rest_framework import generics, filters, status
 from .models import Client
 from .serializers import ClientSerializer
+from django.shortcuts import get_object_or_404
 
 from django.http import HttpResponse
 from openpyxl import Workbook
-from .models import Client
 
 def export_clients_to_excel(request):
     # Create a new Excel workbook and add a worksheet
@@ -44,3 +45,7 @@ class ClientListSearch(generics.ListCreateAPIView):
     serializer_class = ClientSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['id', 'name'] 
+
+class ClientDestroy(generics.DestroyAPIView):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer

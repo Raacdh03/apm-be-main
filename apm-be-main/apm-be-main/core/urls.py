@@ -32,8 +32,8 @@ urlpatterns = [
     # DRF - Django Rest Framework
     path('api-auth/', include('rest_framework.urls')),
     path(f"{api_path}/client/", include(("client.urls_api", "user-api"), namespace="user-api")),
-    path(f"{api_path}/document/", include(("document.urls_api", "user-api"), namespace="user-api")),
-    path(f"{api_path}/payment/", include(("payment.urls_api", "user-api"), namespace="user-api")),
+    path(f"{api_path}/document/", include(("document.urls_api", "doc-api"), namespace="doc-api")),
+    path(f"{api_path}/payment/", include(("payment.urls_api", "payment-api"), namespace="payment-api")),
     path(f"{api_path}/invoice/", include(("invoice.urls_api", "invoice-api"), namespace="invoice-api")),
     path(f"{api_path}/project/", include(("project.urls_api", "project-api"), namespace="project-api")),
 
