@@ -19,6 +19,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 api_path = 'api/v1'
 
 urlpatterns = [
@@ -31,6 +36,12 @@ urlpatterns = [
     path(f"{api_path}/payment/", include(("payment.urls_api", "user-api"), namespace="user-api")),
     path(f"{api_path}/invoice/", include(("invoice.urls_api", "invoice-api"), namespace="invoice-api")),
     path(f"{api_path}/project/", include(("project.urls_api", "project-api"), namespace="project-api")),
+
+    #JWT
+    # SimpleJWT
+    path(f"{api_path}/auth/token/", TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path(f"{api_path}/auth/token/refresh/", TokenRefreshView.as_view(), name='token_refresh'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

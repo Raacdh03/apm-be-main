@@ -1,2 +1,11 @@
+# https://www.djangoproject.com/
 django
 Pillow
+
+# https://www.django-rest-framework.org/
+djangorestframework
+markdown
+django-filter
+
+# https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html
+djangorestframework-simplejwt
